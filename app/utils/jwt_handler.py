@@ -8,7 +8,6 @@ from app.config import (
     ACCESS_TOKEN_EXPIRES_MINUTES
 )
 
-
 def create_access_token(data:dict):
     payload = data.copy()
 
