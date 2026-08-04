@@ -1,10 +1,10 @@
-from pyndantic import BaseModel
+from pydantic import BaseModel
 
 class CreateBlog(BaseModel):
-    title:str
-    text:str
+    title: str
+    text: str
 
 
 
-    
+
 

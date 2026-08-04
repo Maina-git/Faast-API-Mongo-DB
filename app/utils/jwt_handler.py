@@ -1,4 +1,4 @@
-from jose import jwt
+from jose import JWTError, jwt
 from datetime import datetime, timedelta
 
 
@@ -18,12 +18,24 @@ def create_access_token(data:dict):
     payload.update({"exp": expire})
 
     token = jwt.encode(
-    payload, 
-    SECRET_KEY, 
-    algorithm  = ALGORITHM
-     )
-
+        payload, 
+        SECRET_KEY, 
+        algorithm=ALGORITHM
+    )
 
     return token
+
+
+def verify_access_token(token:str):
+    try:
+        payload = jwt.decode(
+            token,
+            SECRET_KEY,
+            algorithms=[ALGORITHM]
+        )
+
+        return payload
+    except JWTError:
+        return None
 
 
